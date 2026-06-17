@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0, user-scalable=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Mind Set Capital">
+    <meta name="theme-color" content="#050b15">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Solicitud de Préstamo Express - Mind Set Capital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-orb orb-a" aria-hidden="true"></div>
+    <div class="bg-orb orb-b" aria-hidden="true"></div>
+
+    <div class="form-container">
+        <div class="header">
+            <h1>Solicitud de Préstamo Express</h1>
+            <h2>Mind Set Capital</h2>
+            <p>(Documento confidencial – Uso exclusivo del solicitante)</p>
+        </div>
+
+        <form id="loan-form" action="https://formsubmit.co/mind.set.capital.pres@gmail.com" method="POST">
+            
+            <input type="hidden" name="_subject" value="Nueva Solicitud de Préstamo - Mind Set Capital">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="true">
+            <input type="hidden" name="_next" id="next-url" value="">
+            <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Nombre*</label>
+                    <input type="text" name="Nombre" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label>Apellido*</label>
+                    <input type="text" name="Apellido" required placeholder="Tu apellido">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>D.N.I*</label>
+                <input type="number" name="DNI" required placeholder="Número de documento">
+            </div>
+
+            <h3 class="section-title">Dirección*</h3>
+            <div class="form-group">
+                <input type="text" name="Direccion_Calle" required placeholder="Dirección de la calle">
+            </div>
+            <div class="form-group">
+                <input type="text" name="Direccion_Linea_2" placeholder="Dirección de la calle Línea 2 (Opcional)">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="text" name="Ciudad" required placeholder="Ciudad">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="Estado_Provincia" required placeholder="Estado / Provincia">
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" name="Codigo_Postal" required placeholder="Código Postal">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Número de teléfono*</label>
+                    <input type="tel" name="Telefono" required placeholder="(000) 000-0000">
+                    <small class="helper-text">Favor ingrese un número de teléfono válido.</small>
+                </div>
+                <div class="form-group">
+                    <label>Email*</label>
+                    <input type="email" name="Email" required placeholder="ejemplo@ejemplo.com">
+                </div>
+            </div>
+
+            <h3 class="section-title">Detalles del Préstamo</h3>
+            
+            <div class="form-group">
+                <label>Monto Solicitado (ARS)*</label>
+                <input type="number" id="monto-solicitado" name="Monto_Solicitado" min="50000" max="1000000" required placeholder="Min $50.000 - Max $1.000.000">
+            </div>
+
+            <div class="form-group">
+                <label>Selecciona tu Plan*</label>
+                <div class="plan-picker" id="plan-picker">
+                    <button type="button" class="picker-toggle" id="picker-toggle" aria-expanded="false">
+                        <span id="selected-plan-label">Seleccione un plan de cuotas</span>
+                        <span class="toggle-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="picker-panel" id="picker-panel">
+                        <button type="button" class="picker-option" data-value="1 Cuota">Plan 1 Cuota</button>
+                        <button type="button" class="picker-option" data-value="2 Cuotas">Plan 2 Cuotas</button>
+                        <button type="button" class="picker-option" data-value="3 Cuotas">Plan 3 Cuotas</button>
+                        <button type="button" class="picker-option" data-value="6 Cuotas">Plan 6 Cuotas</button>
+                    </div>
+                </div>
+                <input type="hidden" name="Plan_Elegido" id="plan-elegido" value="">
+                <small class="error-text" id="plan-error" aria-live="polite"></small>
+            </div>
+
+            <div class="plans-container">
+                <button type="button" class="accordion-toggle plans-master-toggle" data-target="plans-master-panel" aria-expanded="false">
+                    <span>Planes Disponibles</span>
+                    <span class="toggle-icon" aria-hidden="true">+</span>
+                </button>
+
+                <div class="accordion-panel" id="plans-master-panel">
+                    <div class="plan-item">
+                        <button type="button" class="accordion-toggle plan-toggle" data-plan="1 Cuota" data-target="plan-1-panel" aria-expanded="false">
+                            <span>1 Cuota</span>
+                            <span class="toggle-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="accordion-panel plan-detail" id="plan-1-panel">
+                            <ul>
+                                <li>$50.000 abona $85.000</li>
+                                <li>$100.000 abona $160.000</li>
+                                <li>$200.000 abona $320.000</li>
+                                <li>$300.000 abona $480.000</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="plan-item">
+                        <button type="button" class="accordion-toggle plan-toggle" data-plan="2 Cuotas" data-target="plan-2-panel" aria-expanded="false">
+                            <span>2 Cuotas</span>
+                            <span class="toggle-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="accordion-panel plan-detail" id="plan-2-panel">
+                            <ul>
+                                <li>$100.000 abona $85.000 c/u</li>
+                                <li>$200.000 abona $170.000 c/u</li>
+                                <li>$300.000 abona $260.000 c/u</li>
+                                <li>$500.000 abona $400.000 c/u</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="plan-item">
+                        <button type="button" class="accordion-toggle plan-toggle" data-plan="3 Cuotas" data-target="plan-3-panel" aria-expanded="false">
+                            <span>3 Cuotas</span>
+                            <span class="toggle-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="accordion-panel plan-detail" id="plan-3-panel">
+                            <ul>
+                                <li>$200.000 abona $115.000 c/u</li>
+                                <li>$300.000 abona $180.000 c/u</li>
+                                <li>$500.000 abona $170.000 c/u</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="plan-item">
+                        <button type="button" class="accordion-toggle plan-toggle" data-plan="6 Cuotas" data-target="plan-6-panel" aria-expanded="false">
+                            <span>6 Cuotas</span>
+                            <span class="toggle-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div class="accordion-panel plan-detail" id="plan-6-panel">
+                            <ul>
+                                <li>$200.000 abona $75.000 c/u</li>
+                                <li>$300.000 abona $140.000 c/u</li>
+                                <li>$500.000 abona $210.000 c/u</li>
+                                <li>$1.000.000 abona $285.000 c/u</li>
+                                <li>$2.000.000 abona $490.000 c/u</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="section-title">Datos Bancarios</h3>
+            
+            <div class="form-group">
+                <label>ALIAS / CBU / CVU*</label>
+                <input type="text" name="Datos_Bancarios" required placeholder="Ingrese su Alias o CBU/CVU">
+                <small class="note-text">Aclaración: La acreditación se realiza de forma inmediata una vez aprobada la solicitud.</small>
+            </div>
+
+            <div class="form-group">
+                <label>Fecha de pago sugerida*</label>
+                <input type="date" name="Fecha_Pago" required>
+            </div>
+
+            <h3 class="section-title">Condiciones del Contrato</h3>
+            
+            <div class="terms-box">
+                <h4>CONTRATO DE ENTREGA</h4>
+                <p><strong>PRIMERA – Objeto:</strong> La Entidad entrega al Cliente el monto detallado anteriormente, en concepto de préstamo de dinero, obligándose este último a su devolución íntegra en la fecha límite pactada.</p>
+                <p><strong>SEGUNDA – Intereses y Mora:</strong> En caso de mora o incumplimiento, se aplicará un interés de $10.000 ARS diario sobre el monto adeudado, conforme a la legislación vigente en la República Argentina, sin perjuicio de las acciones legales que pudieran corresponder.</p>
+                <p><strong>TERCERA – Forma de Pago:</strong> El Cliente se compromete a devolver el monto total prestado mediante transferencia bancaria, depósito o cualquier otro medio electrónico acordado con la Entidad, en la fecha límite establecida.</p>
+                <p><strong>CUARTA – Responsabilidad y Aceptación:</strong> El Cliente declara haber recibido efectivamente el monto especificado y acepta todas las condiciones de este contrato, renunciando a reclamos futuros por concepto de desconocimiento o error en los datos consignados.</p>
+                <p><strong>QUINTA – Confidencialidad:</strong> Las partes se comprometen a mantener la confidencialidad de toda información y documentación relacionada con el presente contrato, sin divulgarla a terceros salvo requerimiento judicial.</p>
+                <p><strong>SEXTA – Jurisdicción y Ley Aplicable:</strong> Para todos los efectos legales derivados del presente contrato, las partes se someten a la jurisdicción de los tribunales competentes de la Ciudad Autónoma de Buenos Aires, República Argentina, renunciando a cualquier otro fuero o jurisdicción.</p>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="acepto_terminos" name="Acepta_Terminos" value="SI" required>
+                <label for="acepto_terminos" class="checkbox-label">ACEPTO las condiciones de contrato especificadas.</label>
+            </div>
+
+            <button type="submit" class="btn-submit">Guardar - Enviar Solicitud</button>
+        </form>
+    </div>
+
+    <script>
+        const loanForm = document.getElementById('loan-form');
+        const nextUrl = document.getElementById('next-url');
+        const picker = document.getElementById('plan-picker');
+        const pickerToggle = document.getElementById('picker-toggle');
+        const pickerPanel = document.getElementById('picker-panel');
+        const selectedPlanLabel = document.getElementById('selected-plan-label');
+        const planElegido = document.getElementById('plan-elegido');
+        const planError = document.getElementById('plan-error');
+        const masterPlansToggle = document.querySelector('.plans-master-toggle');
+        const montoSolicitadoInput = document.getElementById('monto-solicitado');
+
+        if (nextUrl) {
+            const isHttp = /^https?:$/.test(window.location.protocol);
+            nextUrl.value = isHttp
+                ? new URL('gracias.html', window.location.href).toString()
+                : 'https://formsubmit.co/thanks';
+        }
+
+        const updateParentPanelHeights = (panel) => {
+            let current = panel?.parentElement?.closest('.accordion-panel');
+            while (current) {
+                if (current.classList.contains('is-open')) {
+                    current.style.maxHeight = `${current.scrollHeight + 50}px`;
+                }
+                current = current.parentElement?.closest('.accordion-panel');
+            }
+        };
+
+        const setAccordionState = (button, forceOpen) => {
+            const panel = document.getElementById(button.dataset.target);
+            if (!panel) return;
+
+            const isOpen = typeof forceOpen === 'boolean' ? forceOpen : !button.classList.contains('is-open');
+            button.classList.toggle('is-open', isOpen);
+            button.setAttribute('aria-expanded', String(isOpen));
+            panel.classList.toggle('is-open', isOpen);
+            
+            if (isOpen) {
+                panel.style.maxHeight = `${panel.scrollHeight + 50}px`;
+                if (typeof forceOpen !== 'boolean') {
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            panel.style.maxHeight = `${panel.scrollHeight + 50}px`;
+                            updateParentPanelHeights(panel);
+                        });
+                    });
+                } else {
+                    updateParentPanelHeights(panel);
+                }
+            } else {
+                panel.style.maxHeight = '0px';
+                updateParentPanelHeights(panel);
+            }
+        };
+
+        const scrollToPlanOnMobile = (planButton) => {
+            if (!planButton || window.matchMedia('(max-width: 700px)').matches === false) {
+                return;
+            }
+
+            planButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        };
+
+        document.querySelectorAll('.accordion-toggle').forEach((button) => {
+            button.addEventListener('click', () => {
+                // Si es un plan (tiene clase plan-toggle), cierra los otros planes
+                if (button.classList.contains('plan-toggle')) {
+                    document.querySelectorAll('.plan-toggle').forEach((otherButton) => {
+                        if (otherButton !== button && otherButton.classList.contains('is-open')) {
+                            setAccordionState(otherButton, false);
+                        }
+                    });
+                }
+                setAccordionState(button);
+            });
+        });
+
+        // Recalcular alturas de paneles padre cuando termina la transición
+        document.querySelectorAll('.accordion-panel').forEach((panel) => {
+            panel.addEventListener('transitionend', (e) => {
+                if (e.propertyName === 'max-height' && panel.classList.contains('is-open')) {
+                    updateParentPanelHeights(panel);
+                }
+            });
+        });
+
+        const openPlanDetailsFromSelection = (planValue) => {
+            if (!planValue || !masterPlansToggle) return;
+
+            const targetPlanButton = document.querySelector(`.plan-toggle[data-plan="${planValue}"]`);
+            if (!targetPlanButton) return;
+
+            setAccordionState(masterPlansToggle, true);
+
+            document.querySelectorAll('.plan-toggle').forEach((button) => {
+                setAccordionState(button, button === targetPlanButton);
+            });
+
+            requestAnimationFrame(() => {
+                const masterPanel = document.getElementById('plans-master-panel');
+                const targetPanel = document.getElementById(targetPlanButton.dataset.target);
+                if (masterPanel && masterPanel.classList.contains('is-open')) {
+                    masterPanel.style.maxHeight = `${masterPanel.scrollHeight + 50}px`;
+                }
+                if (targetPanel && targetPanel.classList.contains('is-open')) {
+                    targetPanel.style.maxHeight = `${targetPanel.scrollHeight + 50}px`;
+                }
+            });
+
+            scrollToPlanOnMobile(targetPlanButton);
+        };
+
+        const parseMontoFromText = (text) => {
+            const match = text.match(/\$\s*([\d.]+)/);
+            if (!match) return null;
+
+            const normalized = match[1].replace(/\./g, '');
+            const value = Number(normalized);
+            return Number.isFinite(value) ? value : null;
+        };
+
+        document.querySelectorAll('.plan-detail li').forEach((item) => {
+            item.classList.add('monto-item');
+            item.setAttribute('tabindex', '0');
+            item.setAttribute('role', 'button');
+
+            const applyMontoSelection = () => {
+                const monto = parseMontoFromText(item.textContent || '');
+                if (!monto || !montoSolicitadoInput) return;
+
+                montoSolicitadoInput.value = String(monto);
+                montoSolicitadoInput.dispatchEvent(new Event('input', { bubbles: true }));
+
+                document.querySelectorAll('.plan-detail li.monto-picked').forEach((el) => {
+                    el.classList.remove('monto-picked');
+                });
+                item.classList.add('monto-picked');
+
+                if (window.matchMedia('(max-width: 700px)').matches) {
+                    montoSolicitadoInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            };
+
+            item.addEventListener('click', applyMontoSelection);
+            item.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    applyMontoSelection();
+                }
+            });
+        });
+
+        if (picker && pickerToggle && pickerPanel && selectedPlanLabel && planElegido && planError) {
+            pickerToggle.addEventListener('click', () => {
+                const isOpen = picker.classList.toggle('is-open');
+                pickerToggle.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            pickerPanel.querySelectorAll('.picker-option').forEach((option) => {
+                option.addEventListener('click', () => {
+                    const value = option.dataset.value || '';
+                    planElegido.value = value;
+                    selectedPlanLabel.textContent = option.textContent || value;
+                    planError.textContent = '';
+                    openPlanDetailsFromSelection(value);
+                    picker.classList.remove('is-open');
+                    pickerToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!picker.contains(event.target)) {
+                    picker.classList.remove('is-open');
+                    pickerToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            loanForm?.addEventListener('submit', (event) => {
+                if (!planElegido.value) {
+                    event.preventDefault();
+                    planError.textContent = 'Seleccione un plan de cuotas para continuar.';
+                    picker.classList.add('is-open');
+                    pickerToggle.setAttribute('aria-expanded', 'true');
+                    pickerToggle.focus();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
