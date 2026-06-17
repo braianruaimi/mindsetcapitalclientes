@@ -439,6 +439,11 @@ input[type="date"] {
 .checkbox-label {
     margin-bottom: 0;
     color: #eff6ff;
+    transition: color 0.2s ease;
+}
+
+#acepto_terminos:checked + .checkbox-label {
+    color: #46d17a;
 }
 
 .btn-submit {
